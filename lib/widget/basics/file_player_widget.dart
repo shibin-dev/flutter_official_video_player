@@ -12,8 +12,7 @@ class FilePlayerWidget extends StatefulWidget {
 }
 
 class _FilePlayerWidgetState extends State<FilePlayerWidget> {
-  final File file = File(
-      '/data/user/0/com.example.video_example/cache/file_picker/big_buck_bunny_720p_10mb.mp4');
+  final File file = File('/storage/emulated/0/Download/messi.mp4');
   VideoPlayerController? controller;
 
   @override
@@ -38,7 +37,10 @@ class _FilePlayerWidgetState extends State<FilePlayerWidget> {
   Widget build(BuildContext context) => Scaffold(
         body: Column(
           children: [
-            VideoPlayerWidget(controller: controller!),
+            Container(
+              height: 300,
+              child: VideoPlayerWidget(controller: controller!),
+            ),
             buildAddButton(),
           ],
         ),

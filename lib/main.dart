@@ -7,7 +7,7 @@ final urlLandscapeVideo =
     'https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-partying-happily-4640-large.mp4';
 final urlPortraitVideo =
     'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4';
-final urlYoutubeVideo = 'https://youtube.com/watch?v=HSAa9yi0OMA';
+final urlYoutubeVideo = 'https://youtu.be/aCiV-V9m_cI';
 
 void main() => runApp(MyApp());
 

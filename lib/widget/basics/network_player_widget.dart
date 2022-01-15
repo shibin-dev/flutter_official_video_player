@@ -12,7 +12,7 @@ class NetworkPlayerWidget extends StatefulWidget {
 }
 
 class _NetworkPlayerWidgetState extends State<NetworkPlayerWidget> {
-  final textController = TextEditingController(text: urlLandscapeVideo);
+  final textController = TextEditingController(text: urlYoutubeVideo);
   VideoPlayerController? controller;
 
   @override
