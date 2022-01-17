@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+// iyy class aan video pause cheyunnath.
 class BasicOverlayWidget extends StatelessWidget {
   final VideoPlayerController controller;
 
@@ -12,16 +13,20 @@ class BasicOverlayWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () =>
-            controller.value.isPlaying ? controller.pause() : controller.play(),
+        onTap: () {
+          //controller.value.isPlaying ? controller.pause() : controller.play();
+        },
+        //controller.value.isPlaying ? controller.pause() : controller.play(),
         child: Stack(
           children: <Widget>[
-            buildPlay(),
+            //buildPlay(),
             Positioned(
               bottom: 0,
               left: 0,
               right: 0,
-              child: buildIndicator(),
+              child:
+                  //controller.value.isPlaying ? Container() :
+                  buildIndicator(),
             ),
           ],
         ),
@@ -30,6 +35,7 @@ class BasicOverlayWidget extends StatelessWidget {
   Widget buildIndicator() => VideoProgressIndicator(
         controller,
         allowScrubbing: true,
+        colors: VideoProgressColors(playedColor: Colors.white),
       );
 
   Widget buildPlay() => controller.value.isPlaying
