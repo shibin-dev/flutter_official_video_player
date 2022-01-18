@@ -46,6 +46,7 @@ class _NetworkPlayerWidgetState extends State<NetworkPlayerWidget> {
             height: 20,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               if (controller != null && controller!.value.isInitialized)
                 CircleAvatar(
@@ -60,6 +61,14 @@ class _NetworkPlayerWidgetState extends State<NetworkPlayerWidget> {
                     onPressed: () => controller!.setVolume(isMuted ? 1 : 0),
                   ),
                 ),
+              IconButton(
+                  onPressed: () {
+                    Duration currentPosition = controller!.value.position;
+                    Duration targetPosition =
+                        currentPosition - const Duration(seconds: 5);
+                    controller!.seekTo(targetPosition);
+                  },
+                  icon: Icon(Icons.fast_rewind)),
               controller!.value.isPlaying
                   ? IconButton(
                       onPressed: () {
@@ -70,7 +79,15 @@ class _NetworkPlayerWidgetState extends State<NetworkPlayerWidget> {
                       onPressed: () {
                         controller!.play();
                       },
-                      icon: Icon(Icons.play_arrow))
+                      icon: Icon(Icons.play_arrow)),
+              IconButton(
+                  onPressed: () {
+                    Duration currentPosition = controller!.value.position;
+                    Duration targetPosition =
+                        currentPosition + const Duration(seconds: 5);
+                    controller!.seekTo(targetPosition);
+                  },
+                  icon: Icon(Icons.double_arrow_rounded)),
             ],
           ),
         ],

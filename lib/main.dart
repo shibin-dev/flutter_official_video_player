@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player_package/page/orientation_page.dart';
+import 'package:video_player_package/rewindskip/rewindSkipScreen.dart';
 
 import 'page/basics_page.dart';
 
