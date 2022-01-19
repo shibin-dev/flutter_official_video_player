@@ -16,6 +16,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await VideoSharedPreference.init();
 //mukalil ulla rand lines add cheythitt illenki nammal sharedprefference vilikumbo error kanikum.
+
+//imp note
+//Iyy sectionil nammal sharedPreferenceProject enn paranja folder mathrm an use cheyunnath.
+
   runApp(MyApp());
 }
 
