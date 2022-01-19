@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player_package/sharedPreferenceProject/networkvideoPlayer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SharedPrefWidget extends StatefulWidget {
   const SharedPrefWidget({Key? key}) : super(key: key);
@@ -39,32 +40,43 @@ class _SharedPrefWidgetState extends State<SharedPrefWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('SharedPreference')),
+        appBar: AppBar(title: Text('Shimmer Effect in video')),
         body: ListView.builder(
           itemCount: videos.length,
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) {
-                    return NetworkPlayersWidget(
-                      videoUrl: videos[index]["videoUrl"],
-                    );
-                  },
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return NetworkPlayersWidget(
+                        videoUrl: videos[index]["videoUrl"],
+                      );
+                    },
+                  ));
+                },
+                child:
+                    // Shimmer.fromColors(
+                    //   baseColor: Colors.grey,
+                    //   highlightColor: Colors.white,
+                    //   direction: ShimmerDirection.ltr,
+                    //   period: Duration(milliseconds: 1000),
+                    //   enabled: true,
+                    //   child:
+                    Container(
+                  height: 60,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blue),
+                  width: MediaQuery.of(context).size.width,
+                  child: Center(
+                    child: Shimmer.fromColors(
+                        baseColor: Colors.black,
+                        highlightColor: Colors.grey,
+                        child: Text("${videos[index]["title"]}")),
+                  ),
+                  // ),
                 ));
-              },
-              child: Container(
-                height: 60,
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.blue),
-                width: MediaQuery.of(context).size.width,
-                child: Center(
-                  child: Text("${videos[index]["title"]}"),
-                ),
-              ),
-            );
           },
         ));
   }
