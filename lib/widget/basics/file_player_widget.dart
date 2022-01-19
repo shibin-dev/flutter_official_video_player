@@ -23,7 +23,10 @@ class _FilePlayerWidgetState extends State<FilePlayerWidget> {
       controller = VideoPlayerController.file(file)
         ..addListener(() => setState(() {}))
         ..setLooping(true)
-        ..initialize().then((_) => controller!.play());
+        ..initialize().then((_) {
+          controller!.seekTo(Duration(seconds: 3));
+          controller!.play();
+        });
     }
   }
 

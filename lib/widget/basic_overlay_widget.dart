@@ -26,7 +26,7 @@ class BasicOverlayWidget extends StatelessWidget {
               right: 0,
               child:
                   //controller.value.isPlaying ? Container() :
-                  buildIndicator(),
+                  SizedBox(height: 15, child: buildIndicator()),
             ),
           ],
         ),
@@ -35,7 +35,7 @@ class BasicOverlayWidget extends StatelessWidget {
   Widget buildIndicator() => VideoProgressIndicator(
         controller,
         allowScrubbing: true,
-        colors: VideoProgressColors(playedColor: Colors.white),
+        colors: VideoProgressColors(),
       );
 
   Widget buildPlay() => controller.value.isPlaying

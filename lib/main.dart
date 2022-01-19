@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:video_player_package/page/orientation_page.dart';
-import 'package:video_player_package/rewindskip/rewindSkipScreen.dart';
-
+import 'package:video_player_package/providers/network_providers.dart';
+import 'package:provider/provider.dart';
+import 'package:video_player_package/sharedPreferenceProject/mainscreen.dart';
+import 'package:video_player_package/sharedPreferenceProject/video_sharedpreference.dart';
 import 'page/basics_page.dart';
 
 final urlLandscapeVideo =
@@ -10,20 +12,33 @@ final urlPortraitVideo =
     'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4';
 final urlYoutubeVideo = 'https://youtu.be/aCiV-V9m_cI';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await VideoSharedPreference.init();
+//mukalil ulla rand lines add cheythitt illenki nammal sharedprefference vilikumbo error kanikum.
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Video Player',
-        theme: ThemeData(
-          primaryColor: Colors.blueAccent,
-          scaffoldBackgroundColor: Colors.black,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          colorScheme: ColorScheme.dark(),
+  Widget build(BuildContext context) => MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => NetworkProvider(),
+          ),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Video Player',
+          theme: ThemeData(
+            primaryColor: Colors.blueAccent,
+            scaffoldBackgroundColor: Colors.white,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            colorScheme: ColorScheme.light(),
+          ),
+          home: SharedPrefWidget(),
+          //MainPage(),
         ),
-        home: MainPage(),
       );
 }
 
